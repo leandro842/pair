@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------------
+# expectations
+# -----------------------------------------------------------------------------
+# expect(actual).to eq(expected)  # passes if actual == expected
+# expect(actual).to eql(expected) # passes if actual.eql?(expected)
+# expect(actual).not_to eql(not_expected) # passes if not(actual.eql?(expected))
+# expect(actual).to be(expected)
+# expect(actual).to match(/expression/)
+# expect(actual).to be_truthy   # passes if actual is truthy (not nil or false)
+# expect(actual).to be true     # passes if actual == true
+# expect(actual).to be_falsy    # passes if actual is falsy (nil or false)
+# expect { ... }.to raise_error
+# expect { ... }.to raise_error(ErrorClass)
+# -----------------------------------------------------------------------------
