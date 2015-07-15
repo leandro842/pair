@@ -2,50 +2,39 @@ require 'spec_helper'
 require 'lanche'
 
 RSpec.describe Lanche do
+  context '#initialize' do
+    context 'quando chamo passando uma lista valida' do
+      it 'instancia um lanche' do
 
-  context '#tem_ingrediente?' do
+        ingredientes = [
+          Ingrediente.new('Alface', 1.25),
+          Ingrediente.new('Ovo', 2.25),
+          Ingrediente.new('Pao', 1.00)
+        ]
 
-    context 'dado que tenho um lanche com apenas uma alface' do
-      let(:lanche) { Lanche.new [Ingrediente.new('Alface', 1.25)] }
+        lanche = Lanche.new(ingredientes)
 
-      context 'se verifico se tem "Alface"' do
-        it 'retorno true' do
-          expect(lanche.tem_ingrediente?('Alface')).to be_truthy
-        end
-      end
-      
-      context 'se verifico se tem "Ovo"' do
-        it 'retorno false' do
-          expect(lanche.tem_ingrediente?('Ovo')).to be_falsey
-        end
+        expect(lanche).to_not be_nil
+        expect(lanche).to be_a Lanche
       end
     end
-
   end
 
   context '#preco' do
-
-    context 'quando recebo uma lista de ingredientes' do
-      it 'retorna a somatoria dos precos' do
-        lanche = Lanche.new([
+    context 'quando chamo passando uma lista valida' do
+      it 'instancia um lanche' do
+        
+        ingredientes = [
           Ingrediente.new('Alface', 1.25),
-          Ingrediente.new('Pao', 1.00),
-        ])
-
-        expect(lanche.preco).to eq(2.025)
-      end
-    end
-
-    context 'quando recebo uma outra lista de ingredientes' do
-      it 'retorna a somatoria dos precos' do
-        lanche = Lanche.new([
           Ingrediente.new('Ovo', 2.25),
           Ingrediente.new('Pao', 1.00),
-        ])
+          Ingrediente.new('Pao', 1.00)
+        ]
 
-        expect(lanche.preco).to eq(3.25)
+        lanche = Lanche.new(ingredientes)
+
+        expect(lanche.preco).to eq(4.95)
       end
     end
-
   end
 end
