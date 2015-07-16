@@ -4,19 +4,27 @@ class Lanche
   end
 
   def preco
+    @preco = 0
+    @ingredientes.each { |i| @preco += i.preco }
+    promocao
+  end
 
-    preco = 0
-
-    temporaria_para_entender = @ingredientes.select { |i| i.nome == 'Pao' }
-
-    quantidade_de_paes = temporaria_para_entender.size
-
-    @ingredientes.each do |i|
-      preco += i.preco
+  def promocao
+    if tem_promocao_hamburguer?
+      puts 'Hamburguer ------->>>>>>>>>'
+      @preco -= 3
+    elsif tem_promocao_paes?
+      puts "Pao ---------> preco"
+      @preco *= 0.9
     end
+  end
 
-    preco = preco * 0.9 if quantidade_de_paes == 2
+  private
+  def tem_promocao_paes?
+    @ingredientes.select { |i| i.nome == 'Pao' }.size == 2
+  end
 
-    preco
+  def tem_promocao_hamburguer?
+    @ingredientes.select { |i| i.nome == 'Hamburguer de Carne' }.size == 2
   end
 end
